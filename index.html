@@ -36,12 +36,12 @@
   <div class="copy">Send your URL to a friend to start a video call</div>
   <video id="localVideo" autoplay muted></video>
   <video id="remoteVideo" autoplay></video>
-  <script>
+  <script type="text/javascript">
   // Generate random room name if needed
-if (!location.hash) {
-  location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
-}
-const roomHash = location.hash.substring(1);
+  if (!location.hash) {
+    location.hash = Math.floor(Math.random() * 0xFFFFFF).toString(16);
+  }
+  const roomHash = location.hash.substring(1);
 
 // TODO: Replace with your own channel ID
 const drone = new ScaleDrone('yiS12Ts5RdNhebyM');
@@ -144,7 +144,7 @@ function startWebRTC(isOfferer) {
       // Add the new ICE candidate to our connections remote description
       pc.addIceCandidate(
         new RTCIceCandidate(message.candidate), onSuccess, onError
-      );
+        );
     }
   });
 }
@@ -154,9 +154,9 @@ function localDescCreated(desc) {
     desc,
     () => sendMessage({'sdp': pc.localDescription}),
     onError
-  );
+    );
 }
 
-  </script>
+</script>
 </body>
 </html>
